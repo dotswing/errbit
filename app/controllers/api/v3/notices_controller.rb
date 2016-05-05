@@ -16,7 +16,7 @@ class Api::V3::NoticesController < ApplicationController
       params.merge(JSON.parse(request.raw_post) || {})).report
 
     return render text: UNKNOWN_API_KEY, status: 422 unless report.valid?
-    return render text: VERSION_TOO_OLD, status: 422 unless report.should_keep?
+    # return render text: VERSION_TOO_OLD, status: 422 unless report.should_keep?
 
     report.generate_notice!
     render status: 201, json: {
